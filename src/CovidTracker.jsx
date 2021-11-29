@@ -26,7 +26,6 @@ const CovidTracker = () => {
       );
 
       const responce = res.data;
-      console.log(responce);
       setCovidData(responce.countries_stat);
       setCovidStats(responce.world_total);
     } catch (err) {
