@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import lottie from "lottie-web";
-
 import { Alert } from "react-bootstrap";
 
 const CovidTracker = () => {
@@ -14,14 +13,12 @@ const CovidTracker = () => {
     try {
       const setHeader = {
         headers: {
-          "x-rapidapi-host": "corona-virus-world-and-india-data.p.rapidapi.com",
-          "x-rapidapi-key":
-            "08295af6edmsh25c9fc24b3b7d6fp1b591ejsn18d6e7fda81d",
+          process.env.COVID_URL_HEADER
         },
       };
 
       const res = await axios.get(
-        "https://corona-virus-world-and-india-data.p.rapidapi.com/api",
+        process.env.COVID_URL,
         setHeader
       );
 
