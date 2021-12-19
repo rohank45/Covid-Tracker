@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import lottie from "lottie-web";
 import { Alert } from "react-bootstrap";
+import Login from "./auth/Login";
+import Logout from "./auth/Logout";
 
 const CovidTracker = () => {
   const [covidData, setCovidData] = useState([]);
@@ -13,12 +15,15 @@ const CovidTracker = () => {
     try {
       const setHeader = {
         headers: {
-          process.env.COVID_URL_HEADER
+          // process.env.COVID_URL_HEADER
+          "x-rapidapi-host": "corona-virus-world-and-india-data.p.rapidapi.com",
+          "x-rapidapi-key":
+            "08295af6edmsh25c9fc24b3b7d6fp1b591ejsn18d6e7fda81d",
         },
       };
 
       const res = await axios.get(
-        process.env.COVID_URL,
+        "https://corona-virus-world-and-india-data.p.rapidapi.com/api",
         setHeader
       );
 
@@ -48,15 +53,16 @@ const CovidTracker = () => {
     <>
       <Alert variant="danger text-center fw-bold overflow-hidden">
         Refresh page for updates!
+        {localStorage.getItem("login") ? <Logout /> : <Login />}
       </Alert>
 
-      <div className="container mx-auto">
+      <div className="container mx-auto overflow-hidden">
         <header className="d-flex justify-content-center align-items-center overflow-hidden">
           <div style={{ "max-width": "200px" }} ref={element}></div>
           <p className="fw-bold display-6">COVID TRACKER</p>
         </header>
 
-        <div className="text-white fw-bold my-5 text-uppercase responsiveCards overflow-hidden">
+        <div className="text-white fw-bold my-5 text-uppercase responsiveCards">
           <div
             className="card bg-primary mx-2 sm:col-6 overflow-hidden"
             style={{ width: "17rem" }}
@@ -88,7 +94,7 @@ const CovidTracker = () => {
           </div>
         </div>
 
-        <div>
+        <div className="w-100 overflow-scroll">
           <table className="table table-hover text-uppercase rowScroll">
             <thead className="bg-secondary text-white">
               <tr>
@@ -110,8 +116,6 @@ const CovidTracker = () => {
                   deaths,
                   total_recovered,
                   total_tests,
-                  new_cases,
-                  new_deaths,
                 } = stats;
 
                 return (
