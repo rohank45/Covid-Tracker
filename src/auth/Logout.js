@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 const Logout = () => {
   const ClientId =
-    "529553037805-e1bgigerv4b54jl07ldm18egh8q36t17.apps.googleusercontent.com";
+    "166263569789-u63944dvat68f91p8d3rtrsn8tvh0cp9.apps.googleusercontent.com";
 
   const onSuccess = () => {
     localStorage.removeItem("login");
