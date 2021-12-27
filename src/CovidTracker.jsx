@@ -14,10 +14,13 @@ const CovidTracker = () => {
   const getData = async () => {
     try {
       const res = await axios.get(
-        "",
+        "https://corona-virus-world-and-india-data.p.rapidapi.com/api",
         {
           headers: {
-            ""
+            "x-rapidapi-host":
+              "corona-virus-world-and-india-data.p.rapidapi.com",
+            "x-rapidapi-key":
+              "08295af6edmsh25c9fc24b3b7d6fp1b591ejsn18d6e7fda81d",
           },
         }
       );
