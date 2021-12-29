@@ -106,7 +106,7 @@ const CovidTracker = () => {
             </thead>
 
             <tbody>
-              {covidData.map((stats, id) => {
+              {covidData?.map((stats, id) => {
                 const {
                   active_cases,
                   cases,
